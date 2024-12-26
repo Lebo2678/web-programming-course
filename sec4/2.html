@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            align-items: center;
+            text-align: center;
+        }
+
+        header,
+        footer {
+            background-color: pink;
+        }
+
+        main {
+            padding: 0%;
+            margin: 0%;
+            height: 40px;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div {
+            padding: 0%;
+            margin: 0%;
+            width: 100%;
+        }
+
+        div {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        #col1 {
+            width: 20%;
+            background-color: orange;
+        }
+
+        #col2 {
+            width: 60%;
+            background-color: yellow;
+        }
+
+        #col3 {
+            width: 20%;
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>
+            HEADER
+        </header>
+        <div style="padding: 0%; display:flex">
+            <div id="col1">COL 1</div>
+            <div id="col2">COL 2</div>
+            <div id="col3">COL 3</div>
+        </div>
+        <footer>
+            FOOTER
+        </footer>
+    </main>
+</body>
+
+</html>

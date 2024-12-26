@@ -1,0 +1,8 @@
+.color>li {
+    background-color: orange;
+}
+
+ul>li,
+dl {
+    margin: 10px;
+}

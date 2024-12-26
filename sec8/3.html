@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="number" id="num" placeholder="inter number" value="1">
+        <select name="drop" id="drop">
+            <option value="10">10</option>
+            <option value="15">20</option>
+            <option value="20">30</option>
+        </select>
+        <button type="button" id="butt"> Get Result</button>
+
+        <p id="res"></p>
+    </div>
+    <script>
+        var drop = document.getElementById("drop");
+        var butt = document.getElementById("butt");
+
+        butt.addEventListener("click", function () {
+            var nu = drop.value;
+            var x = document.getElementById("num").value;
+            var txt = "";
+            for (let i = 1; i<= nu; i++){
+                txt += i + "=>  " + (x*i) + "<br>";
+            }
+            document.getElementById("res").innerHTML = txt;
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+body{
+    background-color: #bde0fe;
+}
+#imagemap{
+    display :flex;
+    justify-content: center;
+    align-items: center;
+    /* border-radius: 25px; */
+    /* background: linear-gradient(45deg, #d81159,#d62828); */
+    height: 90%;
+}
+#container{
+    display :flex;
+    justify-content: center;
+    align-items: center;
+    /* border-radius: 50px 100px 50px 100px; */
+    background-color: #fdfdff;
+    /* box-shadow: 10px 10px #3a0ca3; */
+    overflow: hidden;
+
+}

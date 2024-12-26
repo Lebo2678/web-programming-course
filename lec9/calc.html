@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            width: 360px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .display {
+            width: 100%;
+            height: 60px;
+            background-color: #111;
+            color: white;
+            font-size: 1.8em;
+            text-align: right;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .button {
+            padding: 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            transition: all 0.1s ease-in-out;
+        }
+
+        .button.number {
+            background-color: #555;
+        }
+
+        .button.operator {
+            background-color: #f0a500;
+        }
+
+        .button.function {
+            background-color: #6c63ff;
+        }
+
+        .button.special {
+            background-color: #e63946;
+        }
+
+        .button.equal {
+            background-color: #4caf50;
+            grid-column: span 2;
+        }
+
+        .button:hover {
+            filter: brightness(90%);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="display" id="display"></div>
+        <div class="buttons">
+            <!-- Scientific Functions -->
+            <button class="button function" onclick="calculate('sin')">sin</button>
+            <button class="button function" onclick="calculate('cos')">cos</button>
+            <button class="button function" onclick="calculate('tan')">tan</button>
+            <button class="button function" onclick="calculate('sqrt')">√</button>
+
+            <button class="button function" onclick="calculate('log')">log</button>
+            <button class="button function" onclick="addToDisplay('^')">x<sup>y</sup></button>
+            <button class="button special" onclick="clearDisplay()">C</button>
+            <button class="button operator" onclick="addToDisplay('/')">/</button>
+
+            <!-- Number Buttons -->
+            <button class="button number" onclick="addToDisplay('7')">7</button>
+            <button class="button number" onclick="addToDisplay('8')">8</button>
+            <button class="button number" onclick="addToDisplay('9')">9</button>
+            <button class="button operator" onclick="addToDisplay('*')">*</button>
+
+            <button class="button number" onclick="addToDisplay('4')">4</button>
+            <button class="button number" onclick="addToDisplay('5')">5</button>
+            <button class="button number" onclick="addToDisplay('6')">6</button>
+            <button class="button operator" onclick="addToDisplay('-')">-</button>
+
+            <button class="button number" onclick="addToDisplay('1')">1</button>
+            <button class="button number" onclick="addToDisplay('2')">2</button>
+            <button class="button number" onclick="addToDisplay('3')">3</button>
+            <button class="button operator" onclick="addToDisplay('+')">+</button>
+
+            <button class="button number" onclick="addToDisplay('0')">0</button>
+            <button class="button number" onclick="addToDisplay('.')">.</button>
+            <button class="button equal" onclick="evaluateExpression()">=</button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+
+        function addToDisplay(value) {
+            display.innerText += value;
+        }
+
+        function clearDisplay() {
+            display.innerText = ''; // Clear without showing zero
+        }
+
+        function evaluateExpression() {
+            try {
+                let expression = display.innerText;
+                if (expression.includes('^')) {
+                    let [base, exponent] = expression.split('^').map(Number);
+                    if (isNaN(base) || isNaN(exponent)) {
+                        display.innerText = 'Error';
+                        return;
+                    }
+                    display.innerText = Math.pow(base, exponent);
+                } else if (expression.includes('/0')) {
+                    display.innerText = 'Error: Division by 0';
+                } else {
+                    display.innerText = eval(expression);
+                }
+            } catch {
+                display.innerText = 'Error';
+            }
+        }
+
+        function calculate(type) {
+            let currentValue = parseFloat(display.innerText);
+            if (isNaN(currentValue)) {
+                display.innerText = 'Error';
+                return;
+            }
+
+            switch (type) {
+                case 'sqrt':
+                    display.innerText = Math.sqrt(currentValue);
+                    break;
+                case 'log':
+                    display.innerText = Math.log10(currentValue);
+                    break;
+                case 'sin':
+                    display.innerText = Math.sin(currentValue).toFixed(10);
+                    break;
+                case 'cos':
+                    display.innerText = Math.cos(currentValue).toFixed(10);
+                    break;
+                case 'tan':
+                    display.innerText = Math.tan(currentValue).toFixed(10);
+                    break;
+                default:
+                    display.innerText = 'Error';
+            }
+        }
+    </script>
+</body>
+
+</html>

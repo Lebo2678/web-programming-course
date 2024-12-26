@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="number" id="num">
+        <button type="button" id="butt"> Get Result</button>
+        <h3 id="res"></h3>
+    </div>
+    <script>
+        var butt = document.getElementById("butt");
+
+        butt.addEventListener("click", function () {
+            var nu = document.getElementById("num").value;
+            var txt = "";
+            if (nu < 0) {
+                txt = "Can't be less than zero";
+            }
+            else if (nu < 50) {
+                txt = "You didn't pass";
+            }
+            else if (nu < 70) {
+                txt = "You got C";
+            }
+            else if (nu < 80) {
+                txt = "You got B";
+            }
+            else if (nu < 85) {
+                txt = "You got A";
+            }
+            else if (nu <= 100) {
+                txt = "You got A+";
+            }
+            else {
+                txt = "You cant get over 100 :("
+            }
+            document.getElementById("res").textContent = txt;
+        })
+    </script>
+</body>
+
+</html>

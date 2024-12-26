@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Loader 3 - Dual Ring */
+        .cir {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            margin: 60px;
+            border-radius: 50%;
+            background-color: green;
+        }
+        .o1 {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            margin: 50px;
+            border-radius: 50%;
+            background-color: black;
+            border: 10px solid;
+            border-color: black;
+            border-left-color: white;
+        }
+        .cir:hover ~ .o1,
+        .cir:hover ~ .o2 {
+            animation: dual-ring 1.2s linear 1;
+        }
+        .o2 {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            margin: 40px;
+            border-radius: 50%;
+            background-color: red;
+            border: 20px solid;
+            border-color: red;
+            border-right-color: white;
+        }
+
+        @keyframes dual-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(180deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="o2"></div>
+    <div class="o1"></div>
+    <div class="cir"></div>
+</body>
+
+</html>
